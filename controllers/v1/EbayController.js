@@ -37,6 +37,11 @@ const EbayController = {
 
         //STEP 1 -- Get code from ebay
         const code = req.query.code;
+        if(!code)
+            return res.status(401).json({ 
+                error: true,
+                message: 'Authorization failed: Ebay returned an empty code'
+            });
 
         try {
             const token = await EbayHelper.ebayInstance.OAuth2.getToken(code);
