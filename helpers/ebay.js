@@ -16,9 +16,7 @@ const eBay = new ebayApis({
     contentLanguage: ebayApis.Locale.it_IT, // default
 
     devId: ENV.EBAY_DEV_ID,
-    ruName:  ENV.EBAY_RUNAME,
-
-    authToken: ENV.EBAY_AUTH_TOKEN
+    ruName:  ENV.EBAY_RUNAME
 });
 
 eBay.OAuth2.setScope([ 

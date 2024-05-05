@@ -35,17 +35,17 @@ const EbayController = {
     authorizeSuccess: async (req, res, next) => {
         debug('Executing success controller');
 
-        //STEP 1 -- Get code from ebay
+        //STEP 1 -- Get code from ebay 
         const code = req.query.code;
-        if(!code)
+        if(!code) 
             return res.status(401).json({ 
                 error: true,
-                message: 'Authorization failed: Ebay returned an empty code'
+                message: 'Authorization failed: Ebay returned an empty'
             });
 
         try {
             const token = await EbayHelper.ebayInstance.OAuth2.getToken(code);
-            eBay.OAuth2.setCredentials(token);
+            eBay.OAuth2.setCredentials(token); 
             req.session.token = token;
 
             return res.status(200).json({ 
@@ -53,7 +53,8 @@ const EbayController = {
                 message: 'Successfully authorized'
             });
         } catch (error) {
-            debug(error);
+            debug('Current code is: ' + code);
+            debug(error.response);
             return res.status(500).json({ 
                 error: true,
                 message: 'Authorize was not successful. Please try again'
