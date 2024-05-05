@@ -45,7 +45,7 @@ const EbayController = {
 
         try {
             const token = await EbayHelper.ebayInstance.OAuth2.getToken(code);
-            eBay.OAuth2.setCredentials(token); 
+            ebayInstance.OAuth2.setCredentials(token); 
             req.session.token = token;
 
             return res.status(200).json({ 
@@ -53,12 +53,10 @@ const EbayController = {
                 message: 'Successfully authorized'
             });
         } catch (error) {
-            debug('Current code is: ' + code);
-            debug(error.response);
             return res.status(500).json({ 
                 error: true,
                 message: 'Authorize was not successful. Please try again'
-            });
+            }); 
         }
     },
 };
