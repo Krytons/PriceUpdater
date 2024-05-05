@@ -1,3 +1,7 @@
+#Exclude package lock, it must be created on install
+package-lock.json
+
+
 # Logs
 logs
 *.log
@@ -40,6 +44,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+.vscode/
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
